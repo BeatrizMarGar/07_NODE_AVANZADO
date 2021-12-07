@@ -11,6 +11,8 @@ const db = require('./lib/connectMongoose');
 /* jshint ignore:end */
 const session = require('express-session')
 
+
+
 // Cargamos las definiciones de todos nuestros modelos
 require('./models/Anuncio');
 
@@ -31,6 +33,14 @@ app.locals.title = 'NodePop';
 
 const loginController = new LoginController()
 
+
+//internalización con i18n
+// -------- TODO pasar configuracion a archivo en lib
+const i18n = require('./lib/i18nConfig');
+app.use(i18n.init);
+
+
+
 //setup de sesiones del website
 app.use(session({
   name: 'nodeapi-session',
@@ -49,6 +59,8 @@ app.use('/private', require('./routes/private'));
 app.get('/login', loginController.index); //controlador
 app.use('/anuncios', require('./routes/anuncios'));
 app.post('/login', loginController.post)
+app.use('/change-locale', require('./routes/change_loc'));
+
 // API v1
 app.use('/apiv1/anuncios', require('./routes/apiv1/anuncios'));
 

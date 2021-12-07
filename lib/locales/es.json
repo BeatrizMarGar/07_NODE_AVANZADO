@@ -1,0 +1,9 @@
+{
+	"empty_file": "el fichero {{file}} está vacio",
+	"not_found": "No encontrado",
+	"not_valid": "No válido",
+	"generic": "Hubo un error: {{err}}",
+	"password": "contraseña",
+	"login": "Iniciar sesión",
+	"Features": "Features"
+}
