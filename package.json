@@ -1,0 +1,39 @@
+{
+  "name": "nodepop",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "DEBUG=nodepop:* nodemon ./bin/www",
+    "hints": "jshint . && ./node_modules/.bin/jscs . || true",
+    "installDB": "node install_db.js",
+    "init-db": "node init-db.js"
+  },
+  "dependencies": {
+    "async": "^1.4.2",
+    "body-parser": "^1.19.0",
+    "hash.js": "^1.0.3",
+    "validator": "^4.0.6",
+    "bcrypt": "^5.0.1",
+    "connect-mongo": "^4.6.0",
+    "cookie-parser": "~1.4.4",
+    "cote": "^1.0.3",
+    "cross-env": "^7.0.3",
+    "debug": "~2.6.9",
+    "dotenv": "^10.0.0",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "express-session": "^1.17.2",
+    "express-validator": "^6.9.2",
+    "http-errors": "~1.6.3",
+    "i18n": "^0.13.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.13",
+    "morgan": "~1.9.1",
+    "nodemailer": "^6.7.2"
+  },
+  "devDependencies": {
+    "jscs": "^2.1.1",
+    "jshint": "^2.8.0"
+  }
+}
