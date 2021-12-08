@@ -6,6 +6,7 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const LoginController = require('./controllers/login_controller')
+const AdController = require('./controllers/ad_controller')
 /* jshint ignore:start */
 const db = require('./lib/connectMongoose');
 /* jshint ignore:end */
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.locals.title = 'NodePop';
 
 const loginController = new LoginController()
+const adController = new AdController()
 
 
 //internalización con i18n
@@ -57,8 +59,9 @@ app.use('/', require('./routes/index'));
 app.use('/private', require('./routes/private'));
 //app.use('/login', require('./routes/login')); //
 app.get('/login', loginController.index); //controlador
-app.use('/anuncios', require('./routes/anuncios'));
 app.post('/login', loginController.post)
+app.post('/newad', adController.post)
+app.use('/anuncios', require('./routes/anuncios'));
 app.use('/change-locale', require('./routes/change_loc'));
 
 // API v1
