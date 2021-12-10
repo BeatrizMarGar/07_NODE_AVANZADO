@@ -1,0 +1,29 @@
+
+<% include _header %>
+<br>
+<% include _headers %>
+<form method="POST">
+    <div class="container">
+        <label for="nombre"><b>Nombre del artículo</b></label>
+        <input type="input" placeholder="Enter Username" name="nombre" required>
+            <br>
+        <label for="precio"><b>Precio del artículo</b></label>
+        <input type="number" placeholder="Enter Username" name="precio" required>
+            <br>
+        <label for="venta"><b>¿Lo vendes o lo compras?</b></label>
+        <input type="boolean" placeholder="Enter Username" name="venta" required>
+            <br>
+        <label for="tags"><b>tags</b></label>
+        <input type="input" placeholder="Enter Username" name="tags" required>
+            <br>
+        <label for="foto"><b>Sube una imagen</b></label>
+        <input type="file" placeholder="Enter Username" name="foto" required>
+            <br>
+            <button type="submit"><%= __('login') %></button>
+          </div>
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#"></a></span>
+    </div>
+    <div><%= error %></div>
+  </form>

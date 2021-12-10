@@ -1,6 +1,7 @@
 'use strict';
 
-const {User} = require('../models')
+const {User, Anuncios} = require('../models')
+const jwt = require('jsonwebtoken')
 
 class LoginController {
 
@@ -8,11 +9,10 @@ class LoginController {
         res.locals.error = ""
         res.render('login');
     }
-    
+    /*
     async post(req, res, next){
         try{
         const {email, password} = req.body
-            console.log(req.body.email)
             //buscar usuario en db
 
             const user = await User.findOne({email})
@@ -37,6 +37,35 @@ class LoginController {
 
         } catch (err) {
             next(err);
+        }
+    }
+*/
+    async JWTPost(req, res, next){
+        try{
+            const {email, password} = req.body;
+            const user = await User.findOne({email})
+
+            
+            if(!user || !(user.comparePassword(password))) {
+                //res.locals.error = res.__("Invalid credentials")
+                res.locals.error = "Invalid credentials"
+                res.render('login')
+                return;
+            } 
+            jwt.sign({_id: user._id}, process.env.SECRET_JWT, {
+                expiresIn: '2d'
+            }, (err, jwtToken) =>{
+                if (err) {
+                    next(err);
+                    return;
+                }
+                    //res.json({token:jwtToken}) 
+                    res.render('anuncios')               
+            })
+
+        }
+        catch (err){
+            next()
         }
     }
 }
