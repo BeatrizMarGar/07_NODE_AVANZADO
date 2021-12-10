@@ -10,7 +10,10 @@ const AdController = require('./controllers/ad_controller')
 /* jshint ignore:start */
 const db = require('./lib/connectMongoose');
 /* jshint ignore:end */
+//Añado control de sesiones
 const session = require('express-session')
+const session_auth = require('./lib/AuthSession')
+const jwtAuth = require('./lib/AuthJwt')
 
 
 
@@ -39,6 +42,8 @@ const adController = new AdController()
 //internalización con i18n
 // -------- TODO pasar configuracion a archivo en lib
 const i18n = require('./lib/i18nConfig');
+const AuthJwt = require('./lib/AuthJwt');
+const MongoStore = require('connect-mongo');
 app.use(i18n.init);
 
 
@@ -51,17 +56,26 @@ app.use(session({
   resave: false, //no almacena sesiones "repetidas"
   cookie: {
     maxAge: 1000* 60 * 60 * 24 * 2 // 2 días de inactividad
-  }
+  },
+  store: MongoStore.create({mongoUrl: process.env.MONGDB_URL})
 }));
+
+app.use((req, res, next) => {
+  res.locals.session = req.session;
+  next()
+})
+
 
 // Web
 app.use('/', require('./routes/index'));
 app.use('/private', require('./routes/private'));
 //app.use('/login', require('./routes/login')); //
 app.get('/login', loginController.index); //controlador
-app.post('/login', loginController.post)
+//app.post('/login', loginController.post)
+app.post('/login', loginController.JWTPost)
 app.post('/newad', adController.post)
-app.use('/anuncios', require('./routes/anuncios'));
+app.get('/newad', adController.index); //controlador
+app.use('/anuncios', AuthJwt, require('./routes/anuncios'));
 app.use('/change-locale', require('./routes/change_loc'));
 
 // API v1
