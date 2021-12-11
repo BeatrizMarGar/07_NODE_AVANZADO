@@ -16,7 +16,7 @@ class AdController {
         try{
             const {nombre, venta, precio, foto, tags} = req.body
             const result = await Ad.insertMany({nombre, venta, precio, foto, tags})
-            res.redirect('/anuncios') //sustituir por redirección a página de anuncios
+            res.redirect('/anuncios')
 
         } catch (err) {
             next(err);

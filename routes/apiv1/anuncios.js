@@ -48,7 +48,8 @@ router.get('/', (req, res, next) => {
 
 // Return the list of available tags
 router.get('/tags', function (req, res) {
-  res.json({ ok: true, allowedTags: Anuncio.allowedTags() });
+  //res.json({ ok: true, allowedTags: Anuncio.allowedTags() });
+  res.render('index', { total, anuncios: rows })
 });
 
 module.exports = router;
