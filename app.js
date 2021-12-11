@@ -75,7 +75,13 @@ app.use('/anuncios', jwtAuth, require('./routes/apiv1/anuncios'));
 app.use('/change-locale', require('./routes/change_loc'));
 app.get('/login', loginController.index); //controlador
 app.post('/login', loginController.post)
+app.get('/logout', loginController.logout)
 app.use('/', session_auth, require('./routes/anuncios'));
+
+//publicar anuncio
+
+app.post('/newad', adController.post)
+app.get('/newad', adController.index); 
 
 /*
 app.use('/private', require('./routes/private'));

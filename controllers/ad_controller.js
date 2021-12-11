@@ -16,6 +16,9 @@ class AdController {
         try{
             const {nombre, venta, precio, foto, tags} = req.body
             const result = await Ad.insertMany({nombre, venta, precio, foto, tags})
+            foto = `${req.file.destination.replace("public", ".")}/${
+        req.file.filename
+      }`;
             res.redirect('/anuncios')
 
         } catch (err) {
