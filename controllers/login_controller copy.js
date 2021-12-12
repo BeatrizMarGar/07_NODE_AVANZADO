@@ -2,6 +2,7 @@
 const jwt = require('jsonwebtoken')
 const { token } = require('morgan')
 const {User} = require('../models')
+const cookieParser = require('cookie-parser');
 
 class LoginController {
 
@@ -47,7 +48,7 @@ class LoginController {
           }
           res.redirect('/');
         })
-      }
+    }
     
 
     async JWTPost(req, res, next){
@@ -59,7 +60,6 @@ class LoginController {
             if(!user || !(user.comparePassword(password))) {
                 //res.locals.error = res.__("Invalid credentials")
                 res.locals.error = "Invalid credentials"
-                res.render('login')
                 return;
             } 
             jwt.sign(
@@ -74,13 +74,11 @@ class LoginController {
                     next(err);
                     return;
                 }
-                   // res.json({ token : jwtToken})
-            req.session.loggedUser = {
-                _id: user._id
-            }
-            
-                   res.cookie('jwtToken', jwtToken)
-                   res.redirect('/')
+                
+                res.cookie('jwtToken', jwtToken)
+                res.redirect('/')
+                //res.send(token)
+                //res.json({ token : jwtToken}) 
             })
 
         }

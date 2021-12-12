@@ -74,20 +74,21 @@ app.post("/api/authenticate", loginController.JWTPost)
 // Web
 
 app.use('/change-locale', require('./routes/change_loc'));
-app.get('/login', loginController.index); //controlador
-app.post('/login', loginController.post)
+app.get('/api/login', loginController.index); //controlador
+app.post('/api//login', loginController.post)
 app.get('/logout', loginController.logout)
 app.use('/', session_auth, require('./routes/anuncios'));
-app.use('/anuncios', jwtAuth, require('./routes/apiv1/anuncios'));
+app.use('/api/anuncios', jwtAuth, require('./routes/apiv1/anuncios'));
 
 //publicar anuncio
 
-//app.post('/newad', adController.post)
-//app.get('/newad', adController.index); 
+app.post('/newad', adController.post)
+app.get('/newad', adController.index); 
 /*
 app.use('/private', require('./routes/private'));
 app.post('/newad', adController.post)
 app.get('/newad', adController.index); 
+
 // API v1
 app.use('/apiv1/anuncios', require('./routes/apiv1/anuncios'));
 */

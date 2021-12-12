@@ -5,7 +5,7 @@
 	"generic": "Hubo un error: {{err}}",
 	"password": "contraseña",
 	"login": "Iniciar sesión",
-	"Features": "Features",
-	"Publish": "Publish",
-	"logout": "logout"
+	"Publish": "Publicar",
+	"logout": "Desconectar",
+	"title": "Nodepop, portal de compra y venta"
 }
