@@ -24,13 +24,19 @@ async function initAds(){
 
     const result = await Ad.insertMany([
         {
-            name: "User1",
-            age: 27
-        },
-        {
-            name: "User2",
-            age: 38,
-        }
+            "nombre": "Bicicleta",
+            "venta": true,
+            "precio": 23015,
+            "foto": "bici.jpg",
+            "tags": [ "lifestyle", "motor"]
+          },
+          {
+            "nombre": "iPhone 3GS",
+            "venta": false,
+            "precio": 5000,
+            "foto": "iphone.png",
+            "tags": [ "lifestyle", "mobile"]
+          }
     ])
     console.log(`Insertados ${result.length} anuncios`)
 }
@@ -46,7 +52,7 @@ async function initUsers(){
             password: await User.hashPassword('1234')
         },
         {
-            email: "User2",
+            email: "user@example.com",
             password: await User.hashPassword('1234')
         }
     ])

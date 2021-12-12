@@ -78,7 +78,7 @@ app.get('/api/login', loginController.index); //controlador
 app.post('/api//login', loginController.post)
 app.get('/logout', loginController.logout)
 app.use('/', session_auth, require('./routes/anuncios'));
-app.use('/api/anuncios', jwtAuth, require('./routes/apiv1/anuncios'));
+app.use('api/anuncios', require('./routes/apiv1/anuncios'));
 
 //publicar anuncio
 
