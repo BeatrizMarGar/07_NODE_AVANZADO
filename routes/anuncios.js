@@ -1,8 +1,8 @@
 'use strict';
 
 const router = require('express').Router();
-const fs = require('fs');
-const Anuncio = require('mongoose').model('Anuncio');
+const Anuncio = require('../models/Anuncio');
+//const Anuncio = require('mongoose').model('Anuncio');
 
 /* GET anuncios page. */
 router.get('/', async function (req, res, next) {
@@ -24,5 +24,7 @@ router.get('/', async function (req, res, next) {
     res.render('anuncios', { total, anuncios: rows });
   } catch(err) { return res.next(err); }
 });
+
+
 
 module.exports = router;

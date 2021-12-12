@@ -5,5 +5,7 @@
 	"generic": "There was an error: {{err}}",
 	"password": "password",
 	"login": "Login",
-	"Features": "Features"
+	"Features": "Features",
+	"Publish": "Publish",
+	"logout": "logout"
 }

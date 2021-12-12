@@ -23,7 +23,6 @@
           <th style="text-align: right">Precio</th>
           <th>Foto</th>
           <th>Tags</th>
-          <th>#</th>
         </tr></thead>
         <tbody>
 <% anuncios.forEach(anuncio => { %>
@@ -31,9 +30,8 @@
             <td><%= anuncio.nombre %></td>
             <td><%= anuncio.venta ? 'Si' : 'No' %></td>
             <td style="text-align: right"><%= anuncio.precio / 100 %>€</td>
-            <td><img src="<%= anuncio.foto %>"></td>
+            <td><img style="width: 20vw; height:20vh" src="<%= anuncio.foto %>"></td>
             <td><%= anuncio.tags %></td>
-            <td><%= anuncio._id %></td>
           </tr>
 <% }) %>
         </tbody>

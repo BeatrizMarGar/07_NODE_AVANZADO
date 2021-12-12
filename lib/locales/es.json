@@ -5,5 +5,7 @@
 	"generic": "Hubo un error: {{err}}",
 	"password": "contraseña",
 	"login": "Iniciar sesión",
-	"Features": "Features"
+	"Features": "Features",
+	"Publish": "Publish",
+	"logout": "logout"
 }

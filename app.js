@@ -68,7 +68,8 @@ const adController = new AdController()
 //Autenticación
 
 app.post("/api/authenticate", loginController.JWTPost)
-app.use('/anuncios', jwtAuth, require('./routes/apiv1/anuncios'));
+//app.use('/anuncios', session_auth, require('./routes/apiv1/anuncios'));
+//app.use('/anuncios', require('./routes/apiv1/anuncios'));
 
 // Web
 
@@ -77,12 +78,12 @@ app.get('/login', loginController.index); //controlador
 app.post('/login', loginController.post)
 app.get('/logout', loginController.logout)
 app.use('/', session_auth, require('./routes/anuncios'));
+app.use('/anuncios', jwtAuth, require('./routes/apiv1/anuncios'));
 
 //publicar anuncio
 
 app.post('/newad', adController.post)
 app.get('/newad', adController.index); 
-
 /*
 app.use('/private', require('./routes/private'));
 app.post('/newad', adController.post)
