@@ -15,9 +15,13 @@ Api for the iOS/Android apps.
 
 Review lib/connectMongoose.js to set database configuration
 
+### Install database
+
+    node install_db.js
+
 ### Init database
 
-    npm run installDB
+    node init-db.js
 
 ## Start
 
@@ -29,13 +33,6 @@ To start in development mode:
 
     npm run dev (including nodemon & debug log)
 
-## Test
-
-    npm test (pending to create, the client specified not to do now)
-
-## JSHint & JSCS
-
-    npm run hints
 
 ## API v1 info
 
@@ -56,6 +53,10 @@ The API can be used with the path:
     }
 
 ### GET /anuncios
+
+### POST NEW AD
+
+    localhost:3000/anuncios
 
 **Input Query**:
 
