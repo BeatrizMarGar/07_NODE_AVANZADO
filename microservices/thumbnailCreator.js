@@ -1,5 +1,7 @@
 "use strict";
 
+//servicio que tiene que estar iniciado para que convierta las imágenes
+
 const { Responder } = require("cote");
 var Jimp = require("jimp");
 
@@ -18,6 +20,6 @@ responder.on("convertir-thumbnail", async (req, done) => {
 		.catch((err) => {
 			console.error(err);
 		});
-	const result = "creación de thumbnail";
+	const result = "thumbnail creado";
 	await done(result);
 });
