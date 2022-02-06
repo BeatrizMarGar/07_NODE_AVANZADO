@@ -12,14 +12,15 @@ const Anuncio = require('./models/Anuncio');
 db.once('open', async function () {
   try {
     const answer = await askUser('Are you sure you want to empty DB? (no) ');
-    if (answer.toLowerCase() === 'yes') {
+    //if (answer.toLowerCase() === 'yes') {
       
       // Inicializar nuestros modelos
       await initAnuncios();
-      
+    /*  
     } else {
       console.log('DB install aborted!');
     }
+    */
     return process.exit(0);
   } catch(err) {
     console.log('Error!', err);
